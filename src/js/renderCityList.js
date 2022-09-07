@@ -1,24 +1,26 @@
-const cityList = document.querySelector(".country-list");
-const cityInfo = document.querySelector(".country-info");
+import Notiflix from 'notiflix';
+
+const cityList = document.querySelector('.country-list');
+const cityInfo = document.querySelector('.country-info');
 
 function renderCityList(cities) {
   if (Object.keys(cities).length > 10) {
     Notiflix.Notify.warning(
-      "Too many matches found. Please enter a more specific name."
+      'Too many matches found. Please enter a more specific name.'
     );
   } else if (Object.keys(cities).length > 1) {
     const markup = cities
-      .map((city) => {
+      .map(city => {
         return `<li>
           <p>  <img src=${city.flags.svg}  alt="flag" width="30" > ${city.name.official}</p>
             </li>`;
       })
-      .join("");
-    cityInfo.innerHTML = "";
+      .join('');
+    cityInfo.innerHTML = '';
     cityList.innerHTML = markup;
   } else {
     const markup = cities
-      .map((city) => {
+      .map(city => {
         return `<h1>
           <img src=${city.flags.svg}  alt="flag" width="30" > ${
           city.name.official
@@ -34,8 +36,8 @@ function renderCityList(cities) {
               </li>
               </ul>`;
       })
-      .join("");
-    cityList.innerHTML = "";
+      .join('');
+    cityList.innerHTML = '';
     cityInfo.innerHTML = markup;
   }
 }
